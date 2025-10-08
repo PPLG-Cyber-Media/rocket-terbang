@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour
     putar.Enable();
   }
 
-  private void FixedUpdate()
+  private void LateUpdate()
   {
     ProsesTerbang();
     ProsesPutar();
@@ -47,28 +47,44 @@ public class Movement : MonoBehaviour
       thrustParticle.Play();
     }
     else
-    { 
+    {
       thrustParticle.Stop();
     }
   }
 
   private void ProsesPutar()
   {
-    if (putar.IsPressed())
+    float nilaiPutar = putar.ReadValue<float>(); // isinya -1 dan 1
+
+    // belok kiri
+    if (nilaiPutar > 0) // jika 1 (kanan)
     {
-      float nilaiPutar = putar.ReadValue<float>(); // isinya -1 dan 1
-
-      // belok kiri
-      if (nilaiPutar > 0) // jika 1 (kanan)
+      Debug.Log("input pusing kanan");
+      ApplyPutar(-kekuatanPutar);
+      if (!leftBoosterParticle.isPlaying)
       {
-        ApplyPutar(-kekuatanPutar);
+        rightBoosterParticle.Stop();
+        leftBoosterParticle.Play();
       }
+    }
 
-      // belok kanan
-      if (nilaiPutar < 0) // jika -1 (kiri)
+    // belok kanan
+    else if (nilaiPutar < 0) // jika -1 (kiri)
+    {
+      Debug.Log("input pusing kiri");
+      ApplyPutar(kekuatanPutar);
+      if (!rightBoosterParticle.isPlaying)
       {
-        ApplyPutar(kekuatanPutar);
+        leftBoosterParticle.Stop();
+        rightBoosterParticle.Play();
       }
+    }
+
+    else
+    {
+      Debug.Log("Tidak ada input putar");
+      rightBoosterParticle.Stop();
+      leftBoosterParticle.Stop();
     }
   }
 
