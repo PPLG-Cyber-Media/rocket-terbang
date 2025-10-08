@@ -8,7 +8,7 @@ public class CollisionHandler : MonoBehaviour
     Debug.Log(collision.gameObject);
     Debug.Log(collision.gameObject.tag);
 
-        switch (collision.gameObject.tag)
+        switch (collision.gameObject.tag)     
         {
             case "Finish":
                 Debug.Log("You Win!");

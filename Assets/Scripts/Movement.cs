@@ -16,6 +16,11 @@ public class Movement : MonoBehaviour
   // rigid body si player
   Rigidbody rb;
 
+  // particle system
+  [SerializeField] ParticleSystem thrustParticle;
+  [SerializeField] ParticleSystem rightBoosterParticle;
+  [SerializeField] ParticleSystem leftBoosterParticle;
+
 
   private void Start()
   {
@@ -39,6 +44,11 @@ public class Movement : MonoBehaviour
     if (terbang.IsPressed())
     {
       rb.AddRelativeForce(Vector3.up * kekuatanTerbang * Time.deltaTime);
+      thrustParticle.Play();
+    }
+    else
+    { 
+      thrustParticle.Stop();
     }
   }
 
