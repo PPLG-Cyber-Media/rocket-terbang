@@ -21,10 +21,13 @@ public class Movement : MonoBehaviour
   [SerializeField] ParticleSystem rightBoosterParticle;
   [SerializeField] ParticleSystem leftBoosterParticle;
 
+  AudioSource audioSource;
+  [SerializeField] AudioClip boostAudio;
 
   private void Start()
   {
     rb = GetComponent<Rigidbody>();
+    audioSource = GetComponent<AudioSource>();
   }
 
   private void OnEnable()
@@ -45,10 +48,15 @@ public class Movement : MonoBehaviour
     {
       rb.AddRelativeForce(Vector3.up * kekuatanTerbang * Time.deltaTime);
       thrustParticle.Play();
+      if (!audioSource.isPlaying)
+      {
+        audioSource.PlayOneShot(boostAudio);
+      }
     }
     else
     {
       thrustParticle.Stop();
+      audioSource.Stop();
     }
   }
 

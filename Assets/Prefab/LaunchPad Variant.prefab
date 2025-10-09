@@ -48,6 +48,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4483857473266037861, guid: 7b6aba9a79c3da14a95fab1263857dc8, type: 3}
+      propertyPath: m_Size.y
+      value: 0.66880274
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483857473266037861, guid: 7b6aba9a79c3da14a95fab1263857dc8, type: 3}
+      propertyPath: m_Size.z
+      value: 3.1765976
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483857473266037861, guid: 7b6aba9a79c3da14a95fab1263857dc8, type: 3}
+      propertyPath: m_Center.y
+      value: 0.89515674
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483857473266037861, guid: 7b6aba9a79c3da14a95fab1263857dc8, type: 3}
+      propertyPath: m_Center.z
+      value: 0.19839096
+      objectReference: {fileID: 0}
     - target: {fileID: 7189627565527577946, guid: 7b6aba9a79c3da14a95fab1263857dc8, type: 3}
       propertyPath: m_Name
       value: LaunchPad Variant

@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
+  [SerializeField] AudioClip crashSound;
+  [SerializeField] AudioClip finishSound;
   
   [SerializeField] ParticleSystem explosionParticle;
+  [SerializeField] ParticleSystem finishParticle;
 
   private void OnCollisionEnter(Collision collision)
   {
@@ -20,12 +23,15 @@ public class CollisionHandler : MonoBehaviour
 
       case "Finish":
         Debug.Log("You Win!");
+        finishParticle.Play();
+        GetComponent<AudioSource>().PlayOneShot(finishSound);
         break;
 
       default:
         Debug.Log("Crash!!");
         explosionParticle.Play();
         GetComponent<Movement>().enabled = false; // matikan script movement
+        GetComponent<AudioSource>().PlayOneShot(crashSound);
         break;
     }
 
